@@ -17,6 +17,7 @@ class App extends Component {
     super();
 
     this.showBottomBar = this.showBottomBar.bind(this);
+    this.hideBottomBar = this.hideBottomBar.bind(this);
   }
 
   showBottomBar() {
@@ -25,7 +26,19 @@ class App extends Component {
     });
   }
 
-  hideBottomBar() {
+  hideBottomBar(event) {
+    const e = event.toElement || event.relatedTarget;
+    if(e && e.parentNode.classList) {
+      if (
+        e.parentNode.classList.contains('small-tile') 
+        || 
+        e.classList.contains('small-tile')
+        ||
+        e.classList.contains('bottom-bar')
+        ) {
+        return;
+      }
+    }
     this.setState({
       bottomBarIsHidden: true,
     });
@@ -35,7 +48,7 @@ class App extends Component {
     return (
       <div>
         <HoverArea showBottomBar={this.showBottomBar}/>
-        <BottomBar tiles={this.state.numOfTiles} isHidden={this.state.bottomBarIsHidden}/>
+        <BottomBar tiles={this.state.numOfTiles} isHidden={this.state.bottomBarIsHidden} hideBottomBar={this.hideBottomBar}/>
       </div>
     );
   }

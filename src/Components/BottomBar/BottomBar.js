@@ -12,12 +12,16 @@ class BottomBar extends Component {
 
     render() {
         return (
-            <div className={`bottom-bar ${this.props.isHidden? 'hidden':''}`}>
+            <div className={`bottom-bar ${this.props.isHidden? 'hidden':''}`} ref={'_bottomBar'}>
                 {
                     this.props.tiles.map((each, index) => <SmallTile key={index}/>)
                 }
             </div>
         )
+    }
+
+    componentDidMount() {
+        this.refs._bottomBar.addEventListener('mouseout', this.props.hideBottomBar);
     }
 }
 
