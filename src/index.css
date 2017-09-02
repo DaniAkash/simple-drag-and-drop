@@ -65,3 +65,18 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.row {
+  width: 600px;
+  height: 150px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.selected-tile {
+  flex: 1;
+  background-color: white;
+  margin: 10px;
+}
