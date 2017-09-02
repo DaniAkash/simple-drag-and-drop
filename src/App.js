@@ -3,14 +3,21 @@ import './App.css';
 
 import HoverArea from './Components/HoverArea/HoverArea';
 import BottomBar from './Components/BottomBar/BottomBar';
+import Container from './Components/Container/Container';
 
 const numberOfTiles=10;
+const initialContainer = [
+  [1, 0, 0],
+  [1, 1, 0],
+  [1, 1, 1]
+];
 
 class App extends Component {
 
   state = {
-    numOfTiles: Array(numberOfTiles).fill(0).map((e,i)=>i+1),
+    numOfTiles: Array(numberOfTiles).fill(0),
     bottomBarIsHidden: true,
+    selectedTiles: initialContainer,
   }
 
   constructor() {
@@ -47,6 +54,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Container selectedTiles={this.state.selectedTiles}/>
         <HoverArea showBottomBar={this.showBottomBar}/>
         <BottomBar tiles={this.state.numOfTiles} isHidden={this.state.bottomBarIsHidden} hideBottomBar={this.hideBottomBar}/>
       </div>
