@@ -2,4 +2,57 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #162037;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.hover-area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  height: 30px;
+  width: 100vw;
+  z-index: 1;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: #f6f6fa;
+  z-index: 5;
+  overflow: auto;
+
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.bottom-bar.hidden {
+  height: 0px;
+}
+
+.small-tile {
+  height: 80px;
+  width: 80px;
+  background-color: #ffffff;
+  margin: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.hidden>.small-tile{
+  height: 0px;
 }
