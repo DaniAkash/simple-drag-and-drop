@@ -22,6 +22,11 @@ class App extends Component {
     isUnselectedDropZone: false,
     isUnselectedDragging: false,
     isSelectedDragging: false,
+    draggedTile: {
+      // type: 'selected' || 'unselected',
+      // cord: [0, 1],
+      // index: 2,
+    }
   }
 
   constructor() {
@@ -36,6 +41,8 @@ class App extends Component {
     this.setDropZone = this.setDropZone.bind(this);
     this.setUnselectedDropZone = this.setUnselectedDropZone.bind(this);
     this.selectTile = this.selectTile.bind(this);
+    this.setDraggedTile = this.setDraggedTile.bind(this);
+    this.clearOldTile = this.clearOldTile.bind(this);
   }
 
   showBottomBar() {
@@ -67,6 +74,10 @@ class App extends Component {
       isSelectedDragging: true,
       bottomBarIsHidden: false,
     });
+    this.setDraggedTile({
+      type: 'selected',
+      cord,
+    });
   }
 
   selectedDragEnd(cord) {
@@ -79,6 +90,10 @@ class App extends Component {
   unselectedDragStart(index) {
     this.setState({
       isUnselectedDragging: true,
+    });
+    this.setDraggedTile({
+      type: 'unselected',
+      index,
     });
   }
 
@@ -101,10 +116,32 @@ class App extends Component {
   }
 
   selectTile(cord) {
-    const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles));
+    const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
     const x = cord[0], y=cord[1];
     selectedTiles[x][y] = 1;
     this.setState({selectedTiles});
+    setTimeout(() => {
+      this.clearOldTile(); // ToDo: Must excecute after drop event is complete.
+    }, 100);
+  }
+
+  setDraggedTile(tile) {
+    this.setState({
+      draggedTile: tile
+    });
+  }
+
+  clearOldTile() {
+    if(this.state.draggedTile.type === 'selected') {
+      const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
+      const x = this.state.draggedTile.cord[0], y= this.state.draggedTile.cord[1];
+      selectedTiles[x][y] = 0;
+      this.setState({selectedTiles});
+    } else {
+      const numOfTiles = [...this.state.numOfTiles];
+      numOfTiles.splice(this.state.draggedTile.index, 1);
+      this.setState({numOfTiles});
+    }
   }
 
   render() {
