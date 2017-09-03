@@ -6,6 +6,8 @@ class DropArea extends Component {
   static propTypes = {
     isDragging: PropTypes.bool.isRequired,
     isDropZone: PropTypes.bool.isRequired,
+    xCord: PropTypes.number.isRequired,
+    yCord: PropTypes.number.isRequired,
   }
 
   render() {

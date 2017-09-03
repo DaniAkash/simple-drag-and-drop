@@ -19,6 +19,8 @@ class App extends Component {
     bottomBarIsHidden: true,
     selectedTiles: initialContainer,
     dropZone: ['',''],
+    isUnselectedDragging: false,
+    isSelectedDragging: false,
   }
 
   constructor() {
@@ -55,9 +57,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Container selectedTiles={this.state.selectedTiles}/>
-        <HoverArea showBottomBar={this.showBottomBar}/>
-        <BottomBar tiles={this.state.numOfTiles} isHidden={this.state.bottomBarIsHidden} hideBottomBar={this.hideBottomBar}/>
+        <Container
+          selectedTiles={this.state.selectedTiles}
+          dropZone={this.state.dropZone}
+          isUnselectedDragging={this.state.isUnselectedDragging}
+          isSelectedDragging={this.state.isSelectedDragging}
+        />
+        <HoverArea
+          showBottomBar={this.showBottomBar}
+        />
+        <BottomBar
+          tiles={this.state.numOfTiles}
+          isHidden={this.state.bottomBarIsHidden}
+          hideBottomBar={this.hideBottomBar}
+        />
       </div>
     );
   }
