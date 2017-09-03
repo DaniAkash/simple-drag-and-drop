@@ -5,7 +5,7 @@ import HoverArea from './Components/HoverArea/HoverArea';
 import BottomBar from './Components/BottomBar/BottomBar';
 import Container from './Components/Container/Container';
 
-const numberOfTiles=10;
+const numberOfTiles=5;
 const initialContainer = [
   [1, 0, 0],
   [1, 0, 1],
