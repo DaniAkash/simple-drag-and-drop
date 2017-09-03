@@ -8,6 +8,7 @@ class DropArea extends Component {
     isDropZone: PropTypes.bool.isRequired,
     xCord: PropTypes.number.isRequired,
     yCord: PropTypes.number.isRequired,
+    setDropZone: PropTypes.func.isRequired,
   }
 
   render() {
@@ -15,8 +16,15 @@ class DropArea extends Component {
 
     const dropZone = this.props.isDropZone ? 'dropzone': '';
 
+    const enterDrop = () => this.props.setDropZone([this.props.xCord, this.props.yCord]);
+    const exitDrop = () => this.props.setDropZone(['','']);
+
     return(
-      <div className={`drop-area ${visibility} ${dropZone}`} draggable={true}/>
+      <div
+        className={`drop-area ${visibility} ${dropZone}`}
+        onDragEnter={enterDrop}
+        onDragLeave={exitDrop}
+      />
     );
   }
 

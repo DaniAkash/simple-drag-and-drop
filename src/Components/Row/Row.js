@@ -10,7 +10,8 @@ const Row = ({
   isUnselectedDragging,
   isSelectedDragging,
   selectedDragStart,
-  selectedDragEnd
+  selectedDragEnd,
+  setDropZone,
 }) => (
   <div className={'row'}>
     {
@@ -38,6 +39,7 @@ const Row = ({
               isDropZone={isDropZone}
               xCord={xCord}
               yCord={yCord}
+              setDropZone={setDropZone}
             />
           );
         }

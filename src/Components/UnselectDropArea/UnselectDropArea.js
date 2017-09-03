@@ -11,7 +11,9 @@ class UnselectDropArea extends Component {
     const dropZone = this.props.isDropZone ? 'dropzone': '';
 
     return(
-      <div className={`unselect-drop-area ${dropZone}`} draggable={true}/>
+      <div
+        className={`unselect-drop-area ${dropZone}`}
+      />
     );
   }
 

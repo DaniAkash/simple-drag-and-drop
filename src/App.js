@@ -33,6 +33,7 @@ class App extends Component {
     this.selectedDragEnd = this.selectedDragEnd.bind(this);
     this.unselectedDragStart = this.unselectedDragStart.bind(this);
     this.unselectedDragEnd = this.unselectedDragEnd.bind(this);
+    this.setDropZone = this.setDropZone.bind(this);
   }
 
   showBottomBar() {
@@ -85,6 +86,12 @@ class App extends Component {
     });
   }
 
+  setDropZone(cord) {
+    this.setState({
+      dropZone: cord
+    });
+  }
+
   render() {
     return (
       <div>
@@ -95,6 +102,7 @@ class App extends Component {
           isSelectedDragging={this.state.isSelectedDragging}
           selectedDragStart={this.selectedDragStart}
           selectedDragEnd={this.selectedDragEnd}
+          setDropZone={this.setDropZone}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}
