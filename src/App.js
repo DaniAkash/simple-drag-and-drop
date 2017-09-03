@@ -41,6 +41,7 @@ class App extends Component {
     this.setDropZone = this.setDropZone.bind(this);
     this.setUnselectedDropZone = this.setUnselectedDropZone.bind(this);
     this.selectTile = this.selectTile.bind(this);
+    this.unSelectTile = this.unSelectTile.bind(this);
     this.setDraggedTile = this.setDraggedTile.bind(this);
     this.clearOldTile = this.clearOldTile.bind(this);
   }
@@ -84,6 +85,7 @@ class App extends Component {
     this.setState({
       isSelectedDragging: false,
       bottomBarIsHidden: true,
+      isUnselectedDropZone: false,
     });
   }
 
@@ -120,6 +122,14 @@ class App extends Component {
     const x = cord[0], y=cord[1];
     selectedTiles[x][y] = 1;
     this.setState({selectedTiles});
+    setTimeout(() => {
+      this.clearOldTile(); // ToDo: Must excecute after drop event is complete.
+    }, 100);
+  }
+
+  unSelectTile() {
+    const numOfTiles = [...this.state.numOfTiles, 1];
+    this.setState({numOfTiles});
     setTimeout(() => {
       this.clearOldTile(); // ToDo: Must excecute after drop event is complete.
     }, 100);
@@ -169,6 +179,7 @@ class App extends Component {
           isSelectedDragging={this.state.isSelectedDragging}
           isUnselectedDropZone={this.state.isUnselectedDropZone}
           setUnselectedDropZone={this.setUnselectedDropZone}
+          unSelectTile={this.unSelectTile}
         />
       </div>
     );
