@@ -34,6 +34,7 @@ class App extends Component {
     this.unselectedDragStart = this.unselectedDragStart.bind(this);
     this.unselectedDragEnd = this.unselectedDragEnd.bind(this);
     this.setDropZone = this.setDropZone.bind(this);
+    this.setUnselectedDropZone = this.setUnselectedDropZone.bind(this);
   }
 
   showBottomBar() {
@@ -88,7 +89,13 @@ class App extends Component {
 
   setDropZone(cord) {
     this.setState({
-      dropZone: cord
+      dropZone: cord,
+    });
+  }
+
+  setUnselectedDropZone(status) {
+    this.setState({
+      isUnselectedDropZone: status,
     });
   }
 
@@ -115,6 +122,7 @@ class App extends Component {
           unselectedDragEnd={this.unselectedDragEnd}
           isSelectedDragging={this.state.isSelectedDragging}
           isUnselectedDropZone={this.state.isUnselectedDropZone}
+          setUnselectedDropZone={this.setUnselectedDropZone}
         />
       </div>
     );

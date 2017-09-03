@@ -13,6 +13,7 @@ class BottomBar extends Component {
     unselectedDragEnd: PropTypes.func.isRequired,
     isSelectedDragging: PropTypes.bool.isRequired,
     isUnselectedDropZone: PropTypes.bool.isRequired,
+    setUnselectedDropZone: PropTypes.func.isRequired,
   }
 
   render() {
@@ -23,6 +24,7 @@ class BottomBar extends Component {
           ?
             <UnselectDropArea
               isDropZone={this.props.isUnselectedDropZone}
+              setUnselectedDropZone={this.props.setUnselectedDropZone}
             />
           :
             null
@@ -38,7 +40,7 @@ class BottomBar extends Component {
           ))
         }
       </div>
-    )
+    );
   }
 
   componentDidMount() {
