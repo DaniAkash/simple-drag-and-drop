@@ -79,4 +79,29 @@ body {
   flex: 1;
   background-color: white;
   margin: 10px;
+
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.drop-area {
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.drop-area.visible {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 10px;
+}
+
+.drop-area.hidden {
+  height: 0px;
+  width: 0px;
+}
+
+.dropzone {
+  background-color: blue !important;
 }

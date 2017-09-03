@@ -18,6 +18,7 @@ class App extends Component {
     numOfTiles: Array(numberOfTiles).fill(0),
     bottomBarIsHidden: true,
     selectedTiles: initialContainer,
+    dropZone: ['',''],
   }
 
   constructor() {
@@ -37,8 +38,8 @@ class App extends Component {
     const e = event.toElement || event.relatedTarget;
     if(e && e.parentNode.classList) {
       if (
-        e.parentNode.classList.contains('small-tile') 
-        || 
+        e.parentNode.classList.contains('small-tile')
+        ||
         e.classList.contains('small-tile')
         ||
         e.classList.contains('bottom-bar')

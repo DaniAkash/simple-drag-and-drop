@@ -7,8 +7,8 @@ class Container extends Component {
         return(
             <div className={'container'}>
                 {
-                    this.props.selectedTiles.map((rowItems, index) => 
-                        <Row items={rowItems} key={index}/>
+                    this.props.selectedTiles.map((rowItems, index) =>
+                        <Row items={rowItems} key={index} xCord={index}/>
                     )
                 }
             </div>
