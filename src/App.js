@@ -35,6 +35,7 @@ class App extends Component {
     this.unselectedDragEnd = this.unselectedDragEnd.bind(this);
     this.setDropZone = this.setDropZone.bind(this);
     this.setUnselectedDropZone = this.setUnselectedDropZone.bind(this);
+    this.selectTile = this.selectTile.bind(this);
   }
 
   showBottomBar() {
@@ -99,6 +100,13 @@ class App extends Component {
     });
   }
 
+  selectTile(cord) {
+    const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles));
+    const x = cord[0], y=cord[1];
+    selectedTiles[x][y] = 1;
+    this.setState({selectedTiles});
+  }
+
   render() {
     return (
       <div>
@@ -110,6 +118,7 @@ class App extends Component {
           selectedDragStart={this.selectedDragStart}
           selectedDragEnd={this.selectedDragEnd}
           setDropZone={this.setDropZone}
+          selectTile={this.selectTile}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}

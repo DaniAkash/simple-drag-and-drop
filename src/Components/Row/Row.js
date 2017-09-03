@@ -12,6 +12,7 @@ const Row = ({
   selectedDragStart,
   selectedDragEnd,
   setDropZone,
+  selectTile,
 }) => (
   <div className={'row'}>
     {
@@ -40,6 +41,7 @@ const Row = ({
               xCord={xCord}
               yCord={yCord}
               setDropZone={setDropZone}
+              selectTile={selectTile}
             />
           );
         }
