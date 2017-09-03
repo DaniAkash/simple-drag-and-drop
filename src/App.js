@@ -30,6 +30,8 @@ class App extends Component {
     this.hideBottomBar = this.hideBottomBar.bind(this);
     this.selectedDragStart = this.selectedDragStart.bind(this);
     this.selectedDragEnd = this.selectedDragEnd.bind(this);
+    this.unselectedDragStart = this.unselectedDragStart.bind(this);
+    this.unselectedDragEnd = this.unselectedDragEnd.bind(this);
   }
 
   showBottomBar() {
@@ -58,13 +60,27 @@ class App extends Component {
 
   selectedDragStart(cord) {
     this.setState({
-      isSelectedDragging: true
+      isSelectedDragging: true,
+      bottomBarIsHidden: false,
     });
   }
 
   selectedDragEnd(cord) {
     this.setState({
-      isSelectedDragging: false
+      isSelectedDragging: false,
+      bottomBarIsHidden: true,
+    });
+  }
+
+  unselectedDragStart(index) {
+    this.setState({
+      isUnselectedDragging: true,
+    });
+  }
+
+  unselectedDragEnd(index) {
+    this.setState({
+      isUnselectedDragging: false,
     });
   }
 
@@ -86,6 +102,8 @@ class App extends Component {
           tiles={this.state.numOfTiles}
           isHidden={this.state.bottomBarIsHidden}
           hideBottomBar={this.hideBottomBar}
+          unselectedDragStart={this.unselectedDragStart}
+          unselectedDragEnd={this.unselectedDragEnd}
         />
       </div>
     );

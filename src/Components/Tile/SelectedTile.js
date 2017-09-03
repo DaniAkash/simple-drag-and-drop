@@ -6,7 +6,12 @@ const selectedTile = ({xCord, yCord, selectedDragStart, selectedDragEnd}) => {
   const stopDrag = () => selectedDragEnd([xCord, yCord]);
 
   return (
-    <div className={'selected-tile'} draggable={true} onDrag={startDrag} onDragEnd={stopDrag}/>
+    <div
+      className={'selected-tile'}
+      draggable={true}
+      onDrag={startDrag}
+      onDragEnd={stopDrag}
+    />
   );
 };
 
