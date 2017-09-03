@@ -8,7 +8,7 @@ import Container from './Components/Container/Container';
 const numberOfTiles=10;
 const initialContainer = [
   [1, 0, 0],
-  [1, 1, 0],
+  [1, 0, 1],
   [1, 1, 1]
 ];
 
@@ -19,6 +19,7 @@ class App extends Component {
     bottomBarIsHidden: true,
     selectedTiles: initialContainer,
     dropZone: ['',''],
+    isUnselectedDropZone: false,
     isUnselectedDragging: false,
     isSelectedDragging: false,
   }
@@ -104,6 +105,8 @@ class App extends Component {
           hideBottomBar={this.hideBottomBar}
           unselectedDragStart={this.unselectedDragStart}
           unselectedDragEnd={this.unselectedDragEnd}
+          isSelectedDragging={this.state.isSelectedDragging}
+          isUnselectedDropZone={this.state.isUnselectedDropZone}
         />
       </div>
     );

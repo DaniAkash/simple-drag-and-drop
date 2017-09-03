@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import SmallTile from '../Tile/SmallTile';
+import UnselectDropArea from '../UnselectDropArea/UnselectDropArea';
 
 class BottomBar extends Component {
 
@@ -10,11 +11,22 @@ class BottomBar extends Component {
     tiles: PropTypes.array.isRequired,
     unselectedDragStart: PropTypes.func.isRequired,
     unselectedDragEnd: PropTypes.func.isRequired,
+    isSelectedDragging: PropTypes.bool.isRequired,
+    isUnselectedDropZone: PropTypes.bool.isRequired,
   }
 
   render() {
     return (
       <div className={`bottom-bar ${this.props.isHidden ? 'hidden' : ''}`} ref={'_bottomBar'}>
+        {
+          this.props.isSelectedDragging
+          ?
+            <UnselectDropArea
+              isDropZone={this.props.isUnselectedDropZone}
+            />
+          :
+            null
+        }
         {
           this.props.tiles.map((each, index) => (
             <SmallTile
