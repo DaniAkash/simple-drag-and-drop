@@ -28,6 +28,8 @@ class App extends Component {
 
     this.showBottomBar = this.showBottomBar.bind(this);
     this.hideBottomBar = this.hideBottomBar.bind(this);
+    this.selectedDragStart = this.selectedDragStart.bind(this);
+    this.selectedDragEnd = this.selectedDragEnd.bind(this);
   }
 
   showBottomBar() {
@@ -45,12 +47,24 @@ class App extends Component {
         e.classList.contains('small-tile')
         ||
         e.classList.contains('bottom-bar')
-        ) {
+      ) {
         return;
       }
     }
     this.setState({
       bottomBarIsHidden: true,
+    });
+  }
+
+  selectedDragStart(cord) {
+    this.setState({
+      isSelectedDragging: true
+    });
+  }
+
+  selectedDragEnd(cord) {
+    this.setState({
+      isSelectedDragging: false
     });
   }
 
@@ -62,6 +76,8 @@ class App extends Component {
           dropZone={this.state.dropZone}
           isUnselectedDragging={this.state.isUnselectedDragging}
           isSelectedDragging={this.state.isSelectedDragging}
+          selectedDragStart={this.selectedDragStart}
+          selectedDragEnd={this.selectedDragEnd}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}

@@ -10,6 +10,8 @@ class Container extends Component {
     dropZone: PropTypes.array.isRequired,
     isUnselectedDragging: PropTypes.bool.isRequired,
     isSelectedDragging: PropTypes.bool.isRequired,
+    selectedDragStart: PropTypes.func.isRequired,
+    selectedDragEnd: PropTypes.func.isRequired,
   }
 
   render() {
@@ -24,6 +26,8 @@ class Container extends Component {
               dropZone={this.props.dropZone}
               isUnselectedDragging={this.props.isUnselectedDragging}
               isSelectedDragging={this.props.isSelectedDragging}
+              selectedDragStart={this.props.selectedDragStart}
+              selectedDragEnd={this.props.selectedDragEnd}
             />
           )
         }
