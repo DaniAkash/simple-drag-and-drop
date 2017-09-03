@@ -15,7 +15,7 @@ const initialContainer = [
 class App extends Component {
 
   state = {
-    numOfTiles: Array(numberOfTiles).fill(0),
+    numOfTiles: Array(numberOfTiles).fill(1),
     bottomBarIsHidden: true,
     selectedTiles: initialContainer,
     dropZone: ['',''],
