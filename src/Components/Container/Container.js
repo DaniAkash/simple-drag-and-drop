@@ -14,6 +14,7 @@ class Container extends Component {
     selectedDragEnd: PropTypes.func.isRequired,
     setDropZone: PropTypes.func.isRequired,
     selectTile: PropTypes.func.isRequired,
+    draggedTile: PropTypes.object.isRequired,
   }
 
   render() {
@@ -32,6 +33,7 @@ class Container extends Component {
               selectedDragEnd={this.props.selectedDragEnd}
               setDropZone={this.props.setDropZone}
               selectTile={this.props.selectTile}
+              draggedTile={this.props.draggedTile}
             />
           )
         }

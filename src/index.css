@@ -92,9 +92,14 @@ body {
   background-color: white;
   margin: 10px;
 
-  transition-property: all;
+  transition-property: height;
+  transition-property: width;
   transition-duration: .5s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.being-dragged {
+  transform: translateX(-9999px);
 }
 
 .drop-area {

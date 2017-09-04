@@ -87,6 +87,9 @@ class App extends Component {
       bottomBarIsHidden: true,
       isUnselectedDropZone: false,
     });
+    setTimeout(() => {
+      this.setDraggedTile({});
+    }, 300);
   }
 
   unselectedDragStart(index) {
@@ -166,6 +169,7 @@ class App extends Component {
           selectedDragEnd={this.selectedDragEnd}
           setDropZone={this.setDropZone}
           selectTile={this.selectTile}
+          draggedTile={this.state.draggedTile}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}
