@@ -15,6 +15,7 @@ class BottomBar extends Component {
     isUnselectedDropZone: PropTypes.bool.isRequired,
     setUnselectedDropZone: PropTypes.func.isRequired,
     unSelectTile: PropTypes.func.isRequired,
+    draggedTile: PropTypes.object.isRequired,
   }
 
   render() {
@@ -38,6 +39,7 @@ class BottomBar extends Component {
               index={index}
               unselectedDragStart={this.props.unselectedDragStart}
               unselectedDragEnd={this.props.unselectedDragEnd}
+              draggedTile={this.props.draggedTile}
             />
           ))
         }

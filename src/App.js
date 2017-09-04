@@ -87,7 +87,7 @@ class App extends Component {
       bottomBarIsHidden: true,
       isUnselectedDropZone: false,
     });
-    setTimeout(() => {
+    setTimeout(() => { // ToDo: Must execute after event ends
       this.setDraggedTile({});
     }, 300);
   }
@@ -106,6 +106,9 @@ class App extends Component {
     this.setState({
       isUnselectedDragging: false,
     });
+    setTimeout(() => { // ToDo: Must execute after event ends
+      this.setDraggedTile({});
+    }, 300);
   }
 
   setDropZone(cord) {
@@ -184,6 +187,7 @@ class App extends Component {
           isUnselectedDropZone={this.state.isUnselectedDropZone}
           setUnselectedDropZone={this.setUnselectedDropZone}
           unSelectTile={this.unSelectTile}
+          draggedTile={this.state.draggedTile}
         />
       </div>
     );
