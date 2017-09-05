@@ -14,7 +14,7 @@ const SmallTile = ({ index, unselectedDragStart, unselectedDragEnd, draggedTile 
     &&
     draggedTile.index === index
   ) {
-    isBeingDragged = 'being-dragged';
+    isBeingDragged = 'unselected-being-dragged';
   }
 
   return (

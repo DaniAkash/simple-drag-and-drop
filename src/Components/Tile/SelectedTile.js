@@ -16,7 +16,7 @@ const selectedTile = ({xCord, yCord, selectedDragStart, selectedDragEnd, dragged
     &&
     draggedTile.cord[1] === yCord
   ) {
-    isBeingDragged = 'being-dragged';
+    isBeingDragged = 'selected-being-dragged';
   }
 
   return (

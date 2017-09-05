@@ -93,7 +93,12 @@ body {
   transition-property: all .5s cubic-bezier(0, 1, 0.5, 1), transform 0 ease;
 }
 
-.being-dragged {
+.selected-being-dragged {
+  position: absolute;
+  transform: translateX(-9999px);
+}
+
+.unselected-being-dragged {
   transform: translateX(-9999px);
 }
 
