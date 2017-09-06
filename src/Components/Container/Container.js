@@ -18,6 +18,9 @@ class Container extends Component {
     activateMine: PropTypes.func.isRequired,
     deactivateMine: PropTypes.func.isRequired,
     activatedMine: PropTypes.array.isRequired,
+    hideMine: PropTypes.func.isRequired,
+    showMine: PropTypes.func.isRequired,
+    hiddenMine: PropTypes.array.isRequired,
   }
 
   render() {
@@ -40,6 +43,9 @@ class Container extends Component {
               activatedMine={this.props.activatedMine}
               activateMine={this.props.activateMine}
               deactivateMine={this.props.deactivateMine}
+              hiddenMine={this.props.hiddenMine}
+              hideMine={this.props.hideMine}
+              showMine={this.props.showMine}
             />
           )
         }

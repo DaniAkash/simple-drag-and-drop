@@ -18,6 +18,9 @@ const Row = ({
   activatedMine,
   activateMine,
   deactivateMine,
+  hiddenMine,
+  hideMine,
+  showMine,
 }) => {
 
   const rowItems = [];
@@ -99,6 +102,11 @@ const Row = ({
               isActivated = true;
             }
 
+            let isHidden = false;
+            if(hiddenMine[0] === xCord && hiddenMine[1] === yCord) {
+              isHidden = true;
+            }
+
             return (
               <Mine
                 key={index}
@@ -107,6 +115,9 @@ const Row = ({
                 deactivateMine={deactivateMine}
                 xCord={xCord}
                 yCord={yCord}
+                isHidden={isHidden}
+                hideMine={hideMine}
+                showMine={showMine}
               />
             );
           })

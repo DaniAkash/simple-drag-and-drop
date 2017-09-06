@@ -22,6 +22,7 @@ class App extends Component {
     selectedTiles: initialContainer,
     dropZone: ['',''],
     activatedMine: ['',''],
+    hiddenMine: ['',''],
     isUnselectedDropZone: false,
     isUnselectedDragging: false,
     isSelectedDragging: false,
@@ -49,6 +50,8 @@ class App extends Component {
     this.unSelectTile = this.unSelectTile.bind(this);
     this.setDraggedTile = this.setDraggedTile.bind(this);
     this.clearOldTile = this.clearOldTile.bind(this);
+    this.hideMine = this.hideMine.bind(this);
+    this.showMine = this.showMine.bind(this);
   }
 
   showBottomBar() {
@@ -76,6 +79,7 @@ class App extends Component {
   }
 
   selectedDragStart(cord) {
+    this.showMine();
     this.setState({
       isSelectedDragging: true,
       bottomBarIsHidden: false,
@@ -98,6 +102,7 @@ class App extends Component {
   }
 
   unselectedDragStart(index) {
+    this.showMine();
     this.setState({
       isUnselectedDragging: true,
     });
@@ -137,6 +142,18 @@ class App extends Component {
   deactivateMine() {
     this.setState({
       activatedMine: ['',''],
+    });
+  }
+
+  hideMine(cord) {
+    this.setState({
+      hiddenMine: cord,
+    });
+  }
+
+  showMine() {
+    this.setState({
+      hiddenMine: ['','']
     });
   }
 
@@ -205,6 +222,9 @@ class App extends Component {
           activateMine={this.activateMine}
           deactivateMine={this.deactivateMine}
           activatedMine={this.state.activatedMine}
+          hideMine={this.hideMine}
+          showMine={this.showMine}
+          hiddenMine={this.state.hiddenMine}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}
