@@ -47,8 +47,10 @@ body {
   background-color: #ffffff;
   margin: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
-  transition-property: all .5s cubic-bezier(0, 1, 0.5, 1), transform 0 ease;
+.hidden>.small-tile{
+  height: 0px;
 }
 
 .unselect-drop-area {
@@ -61,10 +63,6 @@ body {
   transition-property: all;
   transition-duration: .5s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-
-.hidden>.small-tile{
-  height: 0px;
 }
 
 .container {
@@ -89,8 +87,6 @@ body {
   flex: 1;
   background-color: white;
   margin: 10px;
-
-  transition-property: all .5s cubic-bezier(0, 1, 0.5, 1), transform 0 ease;
 }
 
 .selected-being-dragged {
