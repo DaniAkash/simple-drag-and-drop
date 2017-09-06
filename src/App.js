@@ -5,6 +5,8 @@ import HoverArea from './Components/HoverArea/HoverArea';
 import BottomBar from './Components/BottomBar/BottomBar';
 import Container from './Components/Container/Container';
 
+import resolveConflicts from './Services/resolveConflicts';
+
 const numberOfTiles=5;
 const initialContainer = [
   [1, 0, 0],
@@ -139,12 +141,16 @@ class App extends Component {
   }
 
   selectTile(cord) {
-    const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
-    const x = cord[0], y=cord[1];
-    selectedTiles[x][y] = 1;
-    this.setState({selectedTiles});
+    this.clearOldTile(); // ToDo: Must excecute after drop event is complete.
     setTimeout(() => {
-      this.clearOldTile(); // ToDo: Must excecute after drop event is complete.
+      let selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
+      const x = cord[0], y=cord[1];
+      if(selectedTiles[x][y]) {
+        selectedTiles = resolveConflicts(selectedTiles, cord);
+      } else {
+        selectedTiles[x][y] = 1;
+      }
+      this.setState({selectedTiles, bottomBarIsHidden: true});
     }, 100);
   }
 
