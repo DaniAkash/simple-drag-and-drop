@@ -12,9 +12,17 @@ body {
   bottom: 0;
   left: 0;
   background-color: transparent;
-  height: 30px;
+  height: 60px;
   width: 100vw;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+
+.info-text {
+  color: white;
 }
 
 .bottom-bar {
