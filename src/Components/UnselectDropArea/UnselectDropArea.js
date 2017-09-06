@@ -24,7 +24,9 @@ class UnselectDropArea extends Component {
         onDragLeave={exitDrop}
         onDragOver={dragOver}
         onDrop={dropped}
-      />
+      >
+      {'Drop Here!'}
+      </div>
     );
   }
 

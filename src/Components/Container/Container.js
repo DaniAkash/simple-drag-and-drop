@@ -26,6 +26,7 @@ class Container extends Component {
   render() {
     return (
       <div className={'container'}>
+        <h3 className={'header-text'}>Drag and Drop Tiles within this containter!</h3>
         {
           this.props.selectedTiles.map((rowItems, index) =>
             <Row
