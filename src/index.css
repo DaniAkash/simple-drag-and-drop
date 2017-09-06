@@ -81,6 +81,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  position: relative;
 }
 
 .selected-tile {
@@ -119,7 +120,7 @@ body {
   background-color: blue !important;
 }
 
-.mine-row {
+/* .mine-row {
   position: absolute;
   display: flex;
   flex: 1;
@@ -127,13 +128,15 @@ body {
   width: 600px;
   height: 150px;
   background-color: rgba(0, 0, 0, 0.4);
-}
+} */
 
 .mine {
-  /* height: 150px;
-  width: 20px; */
-  flex: 1;
-  margin: 10px;
+  height: 130px;
+  width: 20px;
+  top: 10px;
+  /* flex: 1;
+  margin: 10px; */
+  position: absolute;
   background-color: rgba(100, 100, 100, 0.8);
   z-index: 999;
 }

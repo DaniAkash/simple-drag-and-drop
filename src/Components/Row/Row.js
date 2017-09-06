@@ -18,49 +18,72 @@ const Row = ({
   activatedMine,
   activateMine,
   deactivateMine,
-}) => (
-  <div className={'row'}>
-    {
-      items.map((each, index) => {
-        let yCord = index;
-        if (each === 1) {
-          return (
-            <SelectedTile
-              key={index}
-              xCord={xCord}
-              yCord={yCord}
-              selectedDragStart={selectedDragStart}
-              selectedDragEnd={selectedDragEnd}
-              draggedTile={draggedTile}
-            />
-          );
-        } else {
+}) => {
 
-          let isDropZone = false;
-          if (dropZone[0] === xCord && dropZone[1] === yCord) {
-            isDropZone = true;
-          }
+  const rowItems = [];
 
-          let isDragging = false;
-          if (activatedMine[0] === xCord && activatedMine[1] === yCord) {
-            isDragging= true;
-          }
+  for(let i = 0; i < items.length; i++) {
+    let yCord = i;
 
-          return (
-            <DropArea
-              key={index}
-              isDragging={isDragging}
-              isDropZone={isDropZone}
-              xCord={xCord}
-              yCord={yCord}
-              setDropZone={setDropZone}
-              selectTile={selectTile}
-            />
-          );
-        }
-      })
+    let isDropZone = false;
+    if (dropZone[0] === xCord && dropZone[1] === yCord) {
+      isDropZone = true;
     }
-    <div className="mine-row">
+
+    let isDragging = false;
+    if (activatedMine[0] === xCord && activatedMine[1] === yCord) {
+      isDragging= true;
+    }
+
+    if(i===0) {
+      rowItems.push(
+        <DropArea
+          key={i+2000}
+          isDragging={isDragging}
+          isDropZone={isDropZone}
+          xCord={xCord}
+          yCord={yCord}
+          setDropZone={setDropZone}
+          selectTile={selectTile}
+        />
+      );
+    }
+
+    if(items[i] === 1) {
+      rowItems.push(
+        <SelectedTile
+          key={i}
+          xCord={xCord}
+          yCord={yCord}
+          selectedDragStart={selectedDragStart}
+          selectedDragEnd={selectedDragEnd}
+          draggedTile={draggedTile}
+        />
+      );
+    }
+
+    if(i!==0) {
+      rowItems.push(
+        <DropArea
+          key={i+1000}
+          isDragging={isDragging}
+          isDropZone={isDropZone}
+          xCord={xCord}
+          yCord={yCord}
+          setDropZone={setDropZone}
+          selectTile={selectTile}
+        />
+      );
+    }
+
+  }
+
+  return (
+
+    <div className={'row'}>
+      {
+        rowItems
+      }
       {
         items.map((each, index) => {
           let yCord = index;
@@ -83,7 +106,7 @@ const Row = ({
         })
       }
     </div>
-  </div>
-);
+  );
+};
 
 export default Row;
