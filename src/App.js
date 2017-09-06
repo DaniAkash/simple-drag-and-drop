@@ -150,7 +150,7 @@ class App extends Component {
       } else {
         selectedTiles[x][y] = 1;
       }
-      this.setState({selectedTiles, bottomBarIsHidden: true});
+      this.setState({selectedTiles, bottomBarIsHidden: true, isSelectedDragging: false});
     }, 100);
   }
 

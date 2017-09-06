@@ -16,7 +16,7 @@ const Mine = ({
     <div
       className={`mine ${visibility}`}
       onDragEnter={enterDrop}
-      style={{left: `${(yCord*200)+100}px`}}
+      style={{left: `${(yCord*200)+60}px`}}
     />
   );
 };
