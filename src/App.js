@@ -163,15 +163,23 @@ class App extends Component {
   }
 
   clearOldTile() {
-    if(this.state.draggedTile.type === 'selected') {
+    if(
+      this.state.draggedTile.type
+      &&
+      this.state.draggedTile.type === 'selected'
+    ) {
       const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
       const x = this.state.draggedTile.cord[0], y= this.state.draggedTile.cord[1];
       selectedTiles[x][y] = 0;
-      this.setState({selectedTiles});
-    } else {
+      this.setState({selectedTiles, draggedTile: {}});
+    } else if(
+      this.state.draggedTile.type
+      &&
+      this.state.draggedTile.type === 'unselected'
+    ) {
       const numOfTiles = [...this.state.numOfTiles];
       numOfTiles.splice(this.state.draggedTile.index, 1);
-      this.setState({numOfTiles});
+      this.setState({numOfTiles, draggedTile: {}});
     }
   }
 
