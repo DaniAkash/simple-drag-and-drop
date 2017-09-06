@@ -15,6 +15,9 @@ class Container extends Component {
     setDropZone: PropTypes.func.isRequired,
     selectTile: PropTypes.func.isRequired,
     draggedTile: PropTypes.object.isRequired,
+    activateMine: PropTypes.func.isRequired,
+    deactivateMine: PropTypes.func.isRequired,
+    activatedMine: PropTypes.array.isRequired,
   }
 
   render() {
@@ -34,6 +37,9 @@ class Container extends Component {
               setDropZone={this.props.setDropZone}
               selectTile={this.props.selectTile}
               draggedTile={this.props.draggedTile}
+              activatedMine={this.props.activatedMine}
+              activateMine={this.props.activateMine}
+              deactivateMine={this.props.deactivateMine}
             />
           )
         }

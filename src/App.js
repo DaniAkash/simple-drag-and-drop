@@ -19,6 +19,7 @@ class App extends Component {
     bottomBarIsHidden: true,
     selectedTiles: initialContainer,
     dropZone: ['',''],
+    activatedMine: ['',''],
     isUnselectedDropZone: false,
     isUnselectedDragging: false,
     isSelectedDragging: false,
@@ -40,6 +41,8 @@ class App extends Component {
     this.unselectedDragEnd = this.unselectedDragEnd.bind(this);
     this.setDropZone = this.setDropZone.bind(this);
     this.setUnselectedDropZone = this.setUnselectedDropZone.bind(this);
+    this.activateMine = this.activateMine.bind(this);
+    this.deactivateMine = this.deactivateMine.bind(this);
     this.selectTile = this.selectTile.bind(this);
     this.unSelectTile = this.unSelectTile.bind(this);
     this.setDraggedTile = this.setDraggedTile.bind(this);
@@ -123,6 +126,18 @@ class App extends Component {
     });
   }
 
+  activateMine(cord) {
+    this.setState({
+      activatedMine: cord,
+    });
+  }
+
+  deactivateMine() {
+    this.setState({
+      activatedMine: ['',''],
+    });
+  }
+
   selectTile(cord) {
     const selectedTiles = JSON.parse(JSON.stringify(this.state.selectedTiles)); // ToDo: Find a better way to clone the array
     const x = cord[0], y=cord[1];
@@ -173,6 +188,9 @@ class App extends Component {
           setDropZone={this.setDropZone}
           selectTile={this.selectTile}
           draggedTile={this.state.draggedTile}
+          activateMine={this.activateMine}
+          deactivateMine={this.deactivateMine}
+          activatedMine={this.state.activatedMine}
         />
         <HoverArea
           showBottomBar={this.showBottomBar}
