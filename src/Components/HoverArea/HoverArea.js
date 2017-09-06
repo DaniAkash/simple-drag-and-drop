@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 class HoverArea extends Component {
 
     static propTypes = {
-        showBottomBar: PropTypes.func.isRequired,        
+        showBottomBar: PropTypes.func.isRequired,
     }
 
     render () {
         return(
-            <div className="hover-area" ref={'_hoverArea'}/>
-        )
+            <div className="hover-area" ref={'_hoverArea'}>
+              <p className="info-text">Hover your cursor here for more tiles!</p>
+            </div>
+        );
     };
 
     componentDidMount() {
