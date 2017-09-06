@@ -87,25 +87,31 @@ const Row = ({
         rowItems
       }
       {
-        items.map((each, index) => {
-          let yCord = index;
+        items.indexOf(0) > -1
+        ||
+        (draggedTile.cord && draggedTile.cord[0] === xCord)
+        ?
+          items.map((each, index) => {
+            let yCord = index;
 
-          let isActivated = false;
-          if(activatedMine[0] === xCord && activatedMine[1] === yCord) {
-            isActivated = true;
-          }
+            let isActivated = false;
+            if(activatedMine[0] === xCord && activatedMine[1] === yCord) {
+              isActivated = true;
+            }
 
-          return (
-            <Mine
-              key={index}
-              isActivated={isActivated}
-              activateMine={activateMine}
-              deactivateMine={deactivateMine}
-              xCord={xCord}
-              yCord={yCord}
-            />
-          );
-        })
+            return (
+              <Mine
+                key={index}
+                isActivated={isActivated}
+                activateMine={activateMine}
+                deactivateMine={deactivateMine}
+                xCord={xCord}
+                yCord={yCord}
+              />
+            );
+          })
+        :
+          null
       }
     </div>
   );
