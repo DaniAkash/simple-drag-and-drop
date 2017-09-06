@@ -10,6 +10,7 @@ class DropArea extends Component {
     yCord: PropTypes.number.isRequired,
     setDropZone: PropTypes.func.isRequired,
     selectTile: PropTypes.func.isRequired,
+    deactivateMine: PropTypes.func.isRequired,
   }
 
   render() {
@@ -18,9 +19,15 @@ class DropArea extends Component {
     const dropZone = this.props.isDropZone ? 'dropzone': '';
 
     const enterDrop = () => this.props.setDropZone([this.props.xCord, this.props.yCord]);
-    const exitDrop = () => this.props.setDropZone(['','']);
+    const exitDrop = () => {
+      this.props.deactivateMine();
+      this.props.setDropZone(['','']);
+    };
     const dragOver = event => event.preventDefault();
-    const dropped = () => this.props.selectTile([this.props.xCord, this.props.yCord]);
+    const dropped = () => {
+      this.props.deactivateMine();
+      this.props.selectTile([this.props.xCord, this.props.yCord]);
+    };
 
     return(
       <div

@@ -45,6 +45,7 @@ const Row = ({
           yCord={yCord}
           setDropZone={setDropZone}
           selectTile={selectTile}
+          deactivateMine={deactivateMine}
         />
       );
     }
@@ -72,6 +73,7 @@ const Row = ({
           yCord={yCord}
           setDropZone={setDropZone}
           selectTile={selectTile}
+          deactivateMine={deactivateMine}
         />
       );
     }
